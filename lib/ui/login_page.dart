@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:refactory_test/constant.dart';
+import 'package:refactory_test/provider/signin_provider.dart';
 import 'package:refactory_test/widget/textform.dart';
 
 class LoginPage extends StatelessWidget {
@@ -90,7 +92,11 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton.icon(
                     icon: const Icon(Icons.rounded_corner),
                     label: const Text("Login with Google"),
-                    onPressed: () {},
+                    onPressed: () {
+                      final provider =
+                          Provider.of<SigninProvider>(context, listen: false);
+                      provider.googleLogin();
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32.0),
